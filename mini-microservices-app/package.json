@@ -1,0 +1,22 @@
+{
+  "name": "mini-microservices-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:posts": "nodemon ./posts/index.js",
+    "start:comments": "nodemon ./comments/index.js",
+    "start:query": "nodemon ./query/index.js",
+    "start:bus": "nodemon ./event-bus/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "uuid": "^8.3.2"
+  }
+}

@@ -5,6 +5,7 @@ import { getLogger } from "../logger/create-client";
 import { User } from "../database/models/user";
 import { AuthService } from "../services/auth-service";
 import { BadRequestError } from "../errors/bad-request-error";
+import { validateRequest } from "../middlewares/request-validation";
 
 const router = express.Router();
 const logger = getLogger();
@@ -15,17 +16,12 @@ const validator = [
     .withMessage("email must be valid email"),
   body('password')
     .trim()
-    .isLength({ min: 4, max: 20 })
+    .notEmpty()
     .withMessage("password must be between 4 and 20 characters")
 ];
 
-router.post("/api/users/signin", validator, async (req: Request, res: Response) => {
+router.post("/api/users/signin", validator, validateRequest, async (req: Request, res: Response) => {
   logger.info("Logging user in!");
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    throw new ApiValidationError(errors.array());
-  }
 
   const { password, email } = req.body;
   const existingUser = await User.findOne({ email });

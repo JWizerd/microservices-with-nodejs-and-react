@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
-import { body, validationResult } from "express-validator";
-import { ApiValidationError } from "../errors/api-validation-error";
+import { body } from "express-validator";
 import { getLogger } from "../logger/create-client";
 import { User } from "../database/models/user";
 import { BadRequestError } from "../errors/bad-request-error";
 import { AuthService } from "../services/auth-service";
+import { validateRequest } from "../middlewares/request-validation";
 
 const router = express.Router();
 const logger = getLogger();
@@ -19,13 +19,8 @@ const validator = [
     .withMessage("password must be between 4 and 20 characters")
 ];
 
-router.post("/api/users/signup", validator, async (req: Request, res: Response) => {
+router.post("/api/users/signup", validator, validateRequest, async (req: Request, res: Response) => {
   logger.info("Logging user in!");
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    throw new ApiValidationError(errors.array());
-  }
 
   const existingUser = await User.findOne({ email: req.body.email });
 

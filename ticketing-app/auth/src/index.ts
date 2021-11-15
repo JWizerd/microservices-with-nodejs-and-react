@@ -8,15 +8,21 @@ import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 import { getMongoClient } from './database/get-client';
 import { signUpUserRouter } from './routes/sign-up';
+import cookieSession from 'cookie-session';
 
 (async () => {
   const PORT = 5000;
   const HOST = '0.0.0.0';
 
   const app = express();
+
   await getMongoClient();
 
   app.use(json());
+  app.use(cookieSession({
+    signed: false,
+    httpOnly: true
+  }))
 
   app.use(currentUserRouter);
   app.use(signOutUserRouter);

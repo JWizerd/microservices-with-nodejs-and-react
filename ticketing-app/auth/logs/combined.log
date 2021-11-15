@@ -39,3 +39,54 @@
 {"level":"info","message":"successfully connected to the database","service":"user-service"}
 {"level":"info","message":"successfully connected to the database","service":"user-service"}
 {"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Fetching current user","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Fetching current user","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Fetching current user","service":"user-service"}
+{"level":"info","message":"Fetching current user","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"creating a user!","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"creating a user!","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"creating a user!","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"creating a user!","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"creating a user!","service":"user-service"}
+{"level":"error","message":"verify must be called asynchronous if secret or public key is provided as a callback","service":"user-service"}
+{"level":"error","message":"verify must be called asynchronous if secret or public key is provided as a callback","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"Logging user in!","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"info","message":"Fetching current user","service":"user-service"}

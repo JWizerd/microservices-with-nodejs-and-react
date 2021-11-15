@@ -40,7 +40,7 @@ router.post("/api/users/signin", validator, async (req: Request, res: Response) 
     throw new BadRequestError("Email or password is incorrect.")
   }
 
-  res.send(existingUser);
+  res.status(200).send();
 });
 
 export { router as signInUserRouter };

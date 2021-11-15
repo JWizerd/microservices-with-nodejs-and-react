@@ -6,3 +6,17 @@
 {"level":"error","message":"User already exists. Please use another email.","service":"user-service"}
 {"level":"error","message":"User already exists.","service":"user-service"}
 {"level":"error","message":"Email or password is incorrect.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"verify must be called asynchronous if secret or public key is provided as a callback","service":"user-service"}
+{"level":"error","message":"verify must be called asynchronous if secret or public key is provided as a callback","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}

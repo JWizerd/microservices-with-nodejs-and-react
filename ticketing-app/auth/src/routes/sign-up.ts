@@ -4,6 +4,7 @@ import { ApiValidationError } from "../errors/api-validation-error";
 import { getLogger } from "../logger/create-client";
 import { User } from "../database/models/user";
 import { BadRequestError } from "../errors/bad-request-error";
+import { AuthService } from "../services/auth-service";
 
 const router = express.Router();
 const logger = getLogger();
@@ -34,12 +35,15 @@ router.post("/api/users/signup", validator, async (req: Request, res: Response) 
     throw new BadRequestError("User already exists.");
   }
 
-  const newUser = User.build({ email, password });
-  await User.create(newUser);
-
   logger.info("creating a user!");
+  const model = User.build({ email, password, });
+  const { id } = await User.create(model);
 
-  res.status(201).send(newUser);
+  const jwt = await AuthService.sign({ email, id, role: "Standard" });
+
+  req.session = { jwt };
+
+  res.status(201).send();
 });
 
 export { router as signUpUserRouter };

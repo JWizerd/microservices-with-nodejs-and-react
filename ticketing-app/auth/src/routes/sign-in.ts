@@ -1,7 +1,10 @@
 import express, { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
+import { ApiValidationError } from "../errors/api-validation-error";
+import { getLogger } from "../logger/create-client";
 
 const router = express.Router();
+const logger = getLogger();
 
 const validator = [
   body('email')
@@ -13,15 +16,15 @@ const validator = [
     .withMessage("password must be between 4 and 20 characters")
 ];
 
-router.post("/api/users/signin", validator, (req: Request, res: Response) => {
-  console.log("Logging user in!");
+router.post("/api/users/signin", validator, (req: Request, res: Response): void => {
+  logger.info("Logging user in!");
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
-    throw new Error("Invalid email or password");
+    throw new ApiValidationError(errors.array());
   }
 
-  console.log("creating a user!");
+  logger.info("creating a user!");
 
   res.send({});
 });

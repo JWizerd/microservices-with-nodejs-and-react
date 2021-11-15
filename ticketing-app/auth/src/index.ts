@@ -1,23 +1,34 @@
 import express from 'express';
+import "express-async-errors";
 import { json } from 'body-parser';
 import { currentUserRouter } from "./routes/current-user";
 import { signInUserRouter } from './routes/sign-in';
 import { signOutUserRouter } from './routes/sign-out';
 import { errorHandler } from './middlewares/error-handler';
+import { NotFoundError } from './errors/not-found-error';
+import { getMongoClient } from './database/get-client';
 
-const PORT = 5000;
-const HOST = '0.0.0.0';
+(async () => {
+  const PORT = 5000;
+  const HOST = '0.0.0.0';
 
-const app = express();
+  const app = express();
+  const db = await getMongoClient();
 
-app.use(json());
+  app.use(json());
 
-app.use(errorHandler);
+  app.use(currentUserRouter);
+  app.use(signOutUserRouter);
+  app.use(signInUserRouter);
 
-app.use(currentUserRouter);
-app.use(signOutUserRouter);
-app.use(signInUserRouter);
+  app.all("*", async () => {
+    throw new NotFoundError();
+  })
 
-app.listen(PORT, HOST);
+  // define error handlers after everything else
+  app.use(errorHandler);
 
-console.log(`Running AUTH SERVICE on http://${HOST}:${PORT}`);
+  app.listen(PORT, HOST);
+
+  console.log(`Running AUTH SERVICE on http://${HOST}:${PORT}`);
+})()

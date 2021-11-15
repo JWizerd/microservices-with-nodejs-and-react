@@ -3,7 +3,6 @@ import { body, validationResult } from "express-validator";
 import { ApiValidationError } from "../errors/api-validation-error";
 import { getLogger } from "../logger/create-client";
 import { User } from "../database/models/user";
-import { AuthService } from "../services/auth-service";
 import { BadRequestError } from "../errors/bad-request-error";
 
 const router = express.Router();
@@ -19,7 +18,7 @@ const validator = [
     .withMessage("password must be between 4 and 20 characters")
 ];
 
-router.post("/api/users/signin", validator, async (req: Request, res: Response) => {
+router.post("/api/users/signup", validator, async (req: Request, res: Response) => {
   logger.info("Logging user in!");
   const errors = validationResult(req);
 
@@ -27,20 +26,20 @@ router.post("/api/users/signin", validator, async (req: Request, res: Response) 
     throw new ApiValidationError(errors.array());
   }
 
-  const { password, email } = req.body;
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({ email: req.body.email });
 
-  if (existingUser === null) {
-    throw new BadRequestError("User doesn't exist.");
+  const { email, password } = req.body;
+
+  if (existingUser) {
+    throw new BadRequestError("User already exists.");
   }
 
-  const valid = await AuthService.compareHashes(password, existingUser.password);
+  const newUser = User.build({ email, password });
+  await User.create(newUser);
 
-  if (!valid) {
-    throw new BadRequestError("Email or password is incorrect.")
-  }
+  logger.info("creating a user!");
 
-  res.send(existingUser);
+  res.status(201).send(newUser);
 });
 
-export { router as signInUserRouter };
+export { router as signUpUserRouter };

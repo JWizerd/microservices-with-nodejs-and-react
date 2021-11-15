@@ -1,3 +1,8 @@
 {"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
 {"level":"error","message":"\n    \n=====================\n    \nAPI VALIDATION ERROR:\n    \n[{\"value\":\"1\",\"msg\":\"password must be between 4 and 20 characters\",\"param\":\"password\",\"location\":\"body\"}]\n    \n=====================\n    ","service":"user-service"}
 {"level":"error","message":"command find requires authentication","service":"user-service"}
+{"level":"error","message":"Cannot set headers after they are sent to the client","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"User already exists. Please use another email.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"Email or password is incorrect.","service":"user-service"}

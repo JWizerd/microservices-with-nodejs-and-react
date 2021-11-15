@@ -7,19 +7,21 @@ import { signOutUserRouter } from './routes/sign-out';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 import { getMongoClient } from './database/get-client';
+import { signUpUserRouter } from './routes/sign-up';
 
 (async () => {
   const PORT = 5000;
   const HOST = '0.0.0.0';
 
   const app = express();
-  const db = await getMongoClient();
+  await getMongoClient();
 
   app.use(json());
 
   app.use(currentUserRouter);
   app.use(signOutUserRouter);
   app.use(signInUserRouter);
+  app.use(signUpUserRouter);
 
   app.all("*", async () => {
     throw new NotFoundError();

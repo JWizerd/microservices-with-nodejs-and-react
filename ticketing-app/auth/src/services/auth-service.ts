@@ -4,7 +4,6 @@ import { sign, verify } from 'jsonwebtoken';
 
 const scrpytAsync = promisify(scrypt);
 const signAsync = promisify(sign);
-const verifyAsync = promisify(verify);
 
 export class AuthService {
   static async toHash(password: string) {

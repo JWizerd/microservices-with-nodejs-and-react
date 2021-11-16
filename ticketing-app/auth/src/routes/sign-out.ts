@@ -7,9 +7,9 @@ const logger = getLogger();
 router.get("/api/users/signout", (req, res) => {
   logger.info("Logging user out!");
 
-  res.json({
-    message: "Signed Out"
-  });
+  req.session = null;
+
+  res.send({});
 });
 
 export { router as signOutUserRouter };

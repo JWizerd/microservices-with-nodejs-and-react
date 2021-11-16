@@ -36,6 +36,16 @@ router.post("/api/users/signin", validator, validateRequest, async (req: Request
     throw new BadRequestError("Email or password is incorrect.")
   }
 
+  const jwt = await AuthService.sign({
+    email: existingUser.email,
+    role: "Standard",
+    id: existingUser.id
+  });
+
+  req.session = {
+    jwt
+  };
+
   res.status(200).send();
 });
 

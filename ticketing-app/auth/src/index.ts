@@ -9,6 +9,7 @@ import { NotFoundError } from './errors/not-found-error';
 import { getMongoClient } from './database/get-client';
 import { signUpUserRouter } from './routes/sign-up';
 import cookieSession from 'cookie-session';
+import { attachUser } from './middlewares/attach-user';
 
 (async () => {
   const PORT = 5000;
@@ -23,6 +24,7 @@ import cookieSession from 'cookie-session';
     signed: false,
     httpOnly: true
   }))
+  app.use(attachUser);
 
   app.use(currentUserRouter);
   app.use(signOutUserRouter);

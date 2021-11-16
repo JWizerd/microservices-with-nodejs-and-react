@@ -38,7 +38,7 @@ router.post("/api/users/signup", validator, validateRequest, async (req: Request
 
   req.session = { jwt };
 
-  res.status(201).send();
+  res.status(201).send(model);
 });
 
 export { router as signUpUserRouter };

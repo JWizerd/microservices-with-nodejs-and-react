@@ -1,26 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import { BadRequestError } from "../errors/bad-request-error";
 import { AuthService } from "../services/auth-service";
+import { ReqUser } from "../custom";
 
-export interface ReqUser {
-  email: string
-  role: string
-  id: string
-}
-
-export interface ReqWithUser extends Request {
-  user: ReqUser
-}
-
-export const attachUser = async (req: ReqWithUser, res: Response, next: NextFunction) => {
+export const attachUser = async (req: Request, res: Response, next: NextFunction) => {
   if (!req.session || !req.session.jwt) {
-    throw new BadRequestError("Not logged in.");
+    return next();
   }
 
   const user = await AuthService.verify(req.session.jwt) as ReqUser;
 
   if (!user) {
-    throw new BadRequestError("Token is either expired or not valid. Please login again.");
+    return next();
   }
 
   req.user = user;

@@ -28,3 +28,37 @@
 {"level":"error","message":"Not logged in.","service":"user-service"}
 {"level":"error","message":"Not logged in.","service":"user-service"}
 {"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not logged in.","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"\n    \n=====================\n    \nAPI VALIDATION ERROR:\n    \n[{\"value\":\"test@tet\",\"msg\":\"email must be valid email\",\"param\":\"email\",\"location\":\"body\"}]\n    \n=====================\n    ","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"\n    \n=====================\n    \nAPI VALIDATION ERROR:\n    \n[{\"value\":\"a\",\"msg\":\"password must be between 4 and 20 characters\",\"param\":\"password\",\"location\":\"body\"}]\n    \n=====================\n    ","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"User already exists.","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}
+{"level":"error","message":"Not Authenticated","service":"user-service"}

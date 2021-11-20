@@ -1,17 +1,14 @@
 import express, { Request, Response } from 'express';
 import "express-async-errors";
 import { json } from 'body-parser';
-import { currentUserRouter } from "./routes/current-user";
-import { signInUserRouter } from './routes/sign-in';
-import { signOutUserRouter } from './routes/sign-out';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 import { getMongoClient } from './database/get-client';
-import { signUpUserRouter } from './routes/sign-up';
 import cookieSession from 'cookie-session';
 import { attachUser } from './middlewares/attach-user';
 import cors from 'cors';
 import CorsWhitelistOrigin from './middlewares/cors-origin-whitelist';
+import { authenticate } from './middlewares/authenticate';
 
 (async () => {
   const PORT = 5000;
@@ -40,13 +37,13 @@ import CorsWhitelistOrigin from './middlewares/cors-origin-whitelist';
   }))
 
   app.use(attachUser);
+  app.use(authenticate);
+
+  app.get("/api/tickets", (req: Request, res: Response) => {
+    res.json({ message: "Hello from ticketing service!" });
+  })
 
   app.all('*', CorsWhitelistOrigin(corsOpts.origin));
-
-  app.use(currentUserRouter);
-  app.use(signOutUserRouter);
-  app.use(signInUserRouter);
-  app.use(signUpUserRouter);
 
   app.all("*", async () => {
     throw new NotFoundError();
@@ -57,5 +54,5 @@ import CorsWhitelistOrigin from './middlewares/cors-origin-whitelist';
 
   app.listen(PORT, HOST);
 
-  console.log(`Running AUTH SERVICE on http://${HOST}:${PORT}`);
+  console.log(`Running TICKETING SERVICE on http://${HOST}:${PORT}`);
 })()

@@ -1,7 +1,9 @@
-import axios from 'axios'
-import type { NextPage } from 'next'
+import axios, { AxiosError } from 'axios'
+import { IncomingHttpHeaders, IncomingMessage } from 'http'
+import type { NextPage, NextPageContext } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import getApiClient from '../api/get-client'
 import styles from '../styles/Home.module.css'
 
 interface CurrentUser {
@@ -44,12 +46,16 @@ const Home: NextPage<HomePageProps> = ({ currentUser }: HomePageProps) => {
   )
 }
 
-Home.getInitialProps= async () => {
+Home.getInitialProps= async ({ req }) => {
   try {
-    const { data: currentUser } = await axios.get("http://ticketing-proxy:8080/api/users/currentuser");
+    const client = getApiClient({ req });
+
+    const { data: currentUser } = await client.get('/api/users/currentuser', { withCredentials: true });
+
     return { currentUser };
   } catch (error) {
-    console.error("Not Authenticated");
+    const axiosError = error as AxiosError;
+    console.error(axiosError.response?.data);
     return { currentUser: null };
   }
 }

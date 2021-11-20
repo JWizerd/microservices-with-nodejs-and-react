@@ -14,6 +14,17 @@
       "localRoot": "${workspaceFolder}/auth/",
       "protocol": "inspector",
       "restart": true
+    },
+    {
+      "name": "Tickets: Attach to Docker Container",
+      "type": "node",
+      "request": "attach",
+      "remoteRoot": "/app/",
+      "port": 9230,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}/tickets/",
+      "protocol": "inspector",
+      "restart": true
     }
   ]
 }

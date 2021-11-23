@@ -1,14 +1,15 @@
 import { Stan } from "node-nats-streaming";
+import { Event } from "./config/event";
 
-export abstract class Publisher {
+export abstract class Publisher<T extends Event> {
   abstract onSuccessfulPublish(client: Stan): void
-  abstract subject: string;
+  abstract channel: T['channel'];
 
   constructor(private client: Stan) {}
 
-  publish(data: any) {
+  publish(data: T['data']) {
     this.client.publish(
-      this.subject,
+      this.channel,
       this.serializeData(data),
       () => this.onSuccessfulPublish(this.client)
     );

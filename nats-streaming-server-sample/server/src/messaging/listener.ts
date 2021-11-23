@@ -1,8 +1,9 @@
 import { Message, Stan } from "node-nats-streaming";
+import { Event } from "./config/event";
 
-export abstract class Listener {
-  abstract subject: string;
-  abstract onMessage(data: any, msg: Message): void;
+export abstract class Listener<T extends Event> {
+  abstract channel: T['channel'];
+  abstract onMessage(parsedData: T['data'], msg: Message): void;
   abstract queueGroupName: string;
   protected ackWait = 5 * 1000;
 
@@ -36,19 +37,19 @@ export abstract class Listener {
 
   listen() {
     const sub = this.client.subscribe(
-      this.subject,
+      this.channel,
       this.queueGroupName,
       this.subscriptionsOptions()
     );
 
     sub.on("message", (msg: Message) => {
-      console.log(`RECEIVED #${msg.getSequence()} - ${this.subject}--${this.queueGroupName}`);
+      console.log(`RECEIVED #${msg.getSequence()} - ${this.channel}--${this.queueGroupName}`);
       const parsedData = this.parseMessage(msg);
       this.onMessage(parsedData, msg);
     })
   }
 
-  private parseMessage(msg: Message) {
+  private parseMessage(msg: Message): T['data'] {
     const data = msg.getData();
 
     if (typeof data === 'string') {

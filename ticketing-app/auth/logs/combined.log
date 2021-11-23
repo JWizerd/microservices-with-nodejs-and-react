@@ -643,3 +643,4 @@
 {"level":"error","message":"ROUTE NOT FOUND","service":"user-service"}
 {"level":"info","message":"successfully connected to the database","service":"user-service"}
 {"level":"info","message":"successfully connected to the database","service":"user-service"}
+{"level":"info","message":"successfully connected to the database","service":"user-service"}

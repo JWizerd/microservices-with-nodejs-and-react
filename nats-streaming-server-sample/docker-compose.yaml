@@ -1,0 +1,36 @@
+version: "3.4"
+services:
+  # nats-sample-app:
+  #   build:
+  #     context: ./server
+  #     target: debug
+  #   volumes:
+  #     - ./server:/app
+  #   ports:
+  #     - 5000:5000
+  #     - 9229:9229 #debug port
+  #   environment:
+  #     - NATS_CLUSTER=nats-server
+  #     - NATS_CLUSTER_PORT=14222
+  #     - PORT=5000
+  nats-server:
+    command:
+      - "-p"
+      - "4222"
+      - "-m"
+      - "8222"
+      - "-hbi"
+      - "5s"
+      - "-hbt"
+      - "5s"
+      - "-hbf"
+      - "2"
+      - "-SD"
+      - "-cid"
+      - "ticketing"
+    image: "nats-streaming:0.17.0"
+    ports:
+      - "14222:4222"
+      - "18222:8222"
+    volumes:
+      - "./nats-server:/data"

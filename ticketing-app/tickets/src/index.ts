@@ -9,6 +9,7 @@ import { attachUser } from './middlewares/attach-user';
 import cors from 'cors';
 import CorsWhitelistOrigin from './middlewares/cors-origin-whitelist';
 import { authenticate } from './middlewares/authenticate';
+import { newTicketRouter } from './routes/new';
 
 (async () => {
   const PORT = 5000;
@@ -38,6 +39,7 @@ import { authenticate } from './middlewares/authenticate';
 
   app.use(attachUser);
   app.use(authenticate);
+  app.use(newTicketRouter);
 
   app.get("/api/tickets", (req: Request, res: Response) => {
     res.json({ message: "Hello from ticketing service!" });

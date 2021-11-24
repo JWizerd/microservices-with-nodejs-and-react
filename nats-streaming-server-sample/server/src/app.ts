@@ -3,7 +3,7 @@ import express from "express";
 import { validTicketRequest } from "./middlewares/valid-ticket-request";
 import { Stan } from "node-nats-streaming";
 import { TicketCreatedPublisher } from "./messaging/ticket-created-publisher";
-import { TicketCreatedEvent } from "./messaging/config/ticket-created-event";
+import { TicketCreatedEvent, TicketMessage } from "./messaging/config/ticket-created-event";
 const app = express();
 const HOST = '0.0.0.0';
 const PORT = 5000;
@@ -16,9 +16,11 @@ export function bootstrap(client: Stan) {
     extended: true
   }));
 
-  app.post("/tickets", validTicketRequest, (req: Request, res: Response) => {
+  app.post("/tickets", validTicketRequest, async (req: Request, res: Response) => {
     try {
-      publisher.publish(req.body as TicketCreatedEvent['data']);
+      const { title, price }: TicketMessage = req.body;
+      await publisher.publish({ title, price });
+
       res.status(201).send({
         message: "Ticket successfully created!"
       });
